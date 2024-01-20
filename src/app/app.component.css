@@ -58,10 +58,10 @@
 
   .content {
     display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
     flex-direction: column;
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
     align-items: center;
   }
 
@@ -289,4 +289,13 @@
       display: none;
       visibility: hidden;
     }
+  }
+
+  app-nav-bar{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 10%;
+    width: 100%;
+    background-color: powderblue;
   }

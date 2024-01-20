@@ -27,6 +27,10 @@ export class AppComponent {
 
   }
 
+  inicio(){
+
+  }
+  
   analizar(){
     
     const field:any="usuario"
