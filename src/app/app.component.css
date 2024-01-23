@@ -292,19 +292,21 @@
   }
 
   .content {
-    height: 100%;
-    width: 100%;
+    display: block;
   }
 
   app-nav-bar{
-    display: flex;
+    display: block;
     height: 10%;
     width: 100%;
+    margin: 0%;
+    padding: 0%;
+    border: 0%;
     background-color: powderblue;
   }
 
   router-outlet{
-    display: flex;
+    display: block;
     height: 90%;
     width: 100%;
   }
