@@ -290,21 +290,3 @@
       visibility: hidden;
     }
   }
-
-  .content {
-    height: 100%;
-    width: 100%;
-  }
-
-  app-nav-bar{
-    display: flex;
-    height: 10%;
-    width: 100%;
-    background-color: powderblue;
-  }
-
-  router-outlet{
-    display: flex;
-    height: 90%;
-    width: 100%;
-  }

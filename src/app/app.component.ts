@@ -17,13 +17,14 @@ export class AppComponent {
 
   constructor(private servicioUsuario: UsersService, private servicioAnalisis: AnalisisService){ 
     
-    this.servicioUsuario.obtenerUsuarios().subscribe(
+    this.usuarios=[{"nombre":0}]
+    /*this.servicioUsuario.obtenerUsuarios().subscribe(
       (data)=> {
         this.usuarios=data
       },(error)=> {
         console.log(error)
       }   
-    )
+    )*/
 
   }
 
