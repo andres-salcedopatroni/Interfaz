@@ -27,10 +27,6 @@ export class AppComponent {
     )*/
 
   }
-
-  inicio(){
-
-  }
   
   analizar(){
     
