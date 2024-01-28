@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalisisService } from 'src/app/services/analisis.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-principal',
@@ -12,9 +13,15 @@ export class PrincipalComponent implements OnInit {
   resultados:any;
   lista_id:any=[];
   
-  constructor(private servicioAnalisis: AnalisisService) { 
+  constructor(private servicioUsuario: UsersService,private servicioAnalisis: AnalisisService) { 
 
-    this.usuarios=[{"nombre":0}]
+    this.servicioUsuario.obtenerUsuarios().subscribe(
+      (data)=> {
+        this.usuarios=data
+      },(error)=> {
+        console.log(error)
+      }   
+    )
 
   }
 

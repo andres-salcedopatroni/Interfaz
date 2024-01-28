@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
 
 export class UsersService {
 
-  private direccion="http://localhost:5002/usuarios"
+  private direccion="https://distinct-tunic-calf.cyclic.app/estudiantes"
 
   constructor(private http: HttpClient) { }
 
   obtenerUsuarios():Observable<any>{
 
-    return this.http.get<any>(this.direccion);
+    return this.http.get<any>(this.direccion+"/mostrar");
 
   }
 
