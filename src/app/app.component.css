@@ -291,8 +291,3 @@
     }
   }
 
-  router-outlet {
-    display:flex;
-    height:80%;
-    width: 100%;
-  }
