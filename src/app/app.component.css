@@ -291,16 +291,6 @@
     }
   }
 
-  app-nav-bar {
-    display:flex;
-    padding: 0px;
-    border: 0px;
-    margin: 0px;
-    height: 20%;
-    width: 100%;
-    background-color: grey;
-  }
-
   router-outlet {
     display:flex;
     height:80%;
