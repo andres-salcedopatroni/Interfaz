@@ -13,9 +13,12 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ingresarUsuario(){
+  ingresarUsuario(): void{
     this.router.navigate(['ingresar-estudiantes']);
-    console.log("hola")
+  }
+
+  inicio(): void{
+    this.router.navigate(['**']);
   }
 
 }

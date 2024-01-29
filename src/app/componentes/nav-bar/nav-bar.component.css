@@ -1,25 +1,37 @@
-.barra{
-    display:inline-flex;
-    padding: 0px;
-    border: 0px;
-    margin: 0px;
-    height: 8%;
+.barra{ 
+    height: 6%;
     width: 100%;
     background-color: grey;
 }
 
 .titulo {
-    padding: 0px;
-    border: 0px;
-    margin: 0px;
+    width:100%;
+    text-align: center;
     height: 100%;
-    width: 70%;
+}
+
+.opciones {
+    display: flex;
+    height: 8%;
+    width: 100%;
 }
 
 .opcion {
-    padding: 0px;
-    border: 0px;
-    margin: 0px;
     height: 100%;
-    width: 10%;
+    width: 33%;
+}
+
+.opcion2 {
+    height: 100%;
+    width: 34%;
+}
+
+.opcion * {
+    height: 100%;
+    width: 100%;
+}
+
+.opcion2 * {
+    height: 100%;
+    width: 100%;
 }
