@@ -21,6 +21,11 @@
     width: 33%;
 }
 
+.opcion:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
 .opcion2 {
     height: 100%;
     width: 34%;
