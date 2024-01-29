@@ -17,6 +17,10 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['ingresar-estudiantes']);
   }
 
+  eliminarUsuario(): void{
+    this.router.navigate(['eliminar-estudiantes']);
+  }
+  
   inicio(): void{
     this.router.navigate(['**']);
   }

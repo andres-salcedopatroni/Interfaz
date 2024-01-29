@@ -1,13 +1,19 @@
 <div class="formulario">
-  <div class="titulo">Nombre</div>
-  <input type="text">
-  <div class="titulo">Usuario</div>
-  <input type="text">
-  <div class="titulo">Codigo</div>
-  <input type="text">
-  <div class="titulo">Correo</div>
-  <input type="email">
-  <div class="titulo">Celular</div>
-  <input type="tel">
-  <button>Ingresar</button>
+  <div class="contenidoFormulario">
+    <div class="ingreso">
+      <div class="casilla">Nombre</div>
+      <div class="casilla"><input type="text" [(ngModel)]="nombre"></div>
+      <div class="casilla">Usuario</div>
+      <div class="casilla"><input type="text" [(ngModel)]="usuario"></div>
+      <div class="casilla">Codigo</div>
+      <div class="casilla"><input type="text" [(ngModel)]="codigo"></div>
+      <div class="casilla">Correo</div>
+      <div class="casilla"><input type="email" [(ngModel)]="correo"></div>
+      <div class="casilla">Celular</div>
+      <div class="casilla"><input type="tel" [(ngModel)]="celular"></div>
+    </div>
+    <div class="boton">
+      <button (click)="ingresar()">Ingresar</button>
+    </div>
+  </div>
 </div>
