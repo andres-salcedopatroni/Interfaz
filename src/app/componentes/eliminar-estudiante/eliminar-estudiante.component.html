@@ -3,8 +3,7 @@
         <a class="card" target="_blank" rel="noopener" *ngFor="let u of usuarios; let i = index">
           <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
           <span>{{u.nombre}}</span>
-          <input type="checkbox" [(ngModel)]="aceptacion[i]" (change)="onChange(u.usuario,i)">
-          <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    
+          <input class="check" type="checkbox" [(ngModel)]="aceptacion[i]" (change)="onChange(u.usuario,i)">    
         </a>
       </div>
     
@@ -16,11 +15,3 @@
         </button>
       </div>
     </div>
-
-    <div class="card-container" >
-        <a class="card" target="_blank" rel="noopener" *ngFor="let u of estudiantes; let i = index">
-          <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-          <span>{{u}}</span>
-          <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    
-        </a>
-      </div>

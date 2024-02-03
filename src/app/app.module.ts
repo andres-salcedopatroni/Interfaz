@@ -8,6 +8,7 @@ import { PrincipalComponent } from './componentes/principal/principal.component'
 import { IngresarEstudianteComponent } from './componentes/ingresar-estudiante/ingresar-estudiante.component';
 import { FormsModule } from '@angular/forms';
 import { EliminarEstudianteComponent } from './componentes/eliminar-estudiante/eliminar-estudiante.component';
+import { VerEstudianteComponent } from './componentes/ver-estudiante/ver-estudiante.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { EliminarEstudianteComponent } from './componentes/eliminar-estudiante/e
     NavBarComponent,
     PrincipalComponent,
     IngresarEstudianteComponent,
-    EliminarEstudianteComponent
+    EliminarEstudianteComponent,
+    VerEstudianteComponent
   ],
   imports: [
     BrowserModule,
