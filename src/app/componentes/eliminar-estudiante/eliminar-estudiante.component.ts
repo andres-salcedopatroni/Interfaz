@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-eliminar-estudiante',
@@ -10,8 +11,10 @@ export class EliminarEstudianteComponent implements OnInit {
   usuarios:any;
   resultados:any;
   lista_id:any=[];
+  aceptacion:any=[];
+  estudiantes:any=[];
   
-  constructor(private servicioUsuario: UsersService,private servicioAnalisis: AnalisisService) { 
+  constructor(private servicioUsuario: UsersService) { 
 
     this.servicioUsuario.obtenerUsuarios().subscribe(
       (data)=> {
@@ -26,22 +29,31 @@ export class EliminarEstudianteComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  analizar(): void{
+  eliminarEstudiantes(): void{
     
-    const field:any="usuario"
-    for (let u of this.usuarios) {
-      let user:any=u
-      this.lista_id.push( user.usuario)
-      console.log(this.usuarios)
-      console.log(this.lista_id)
-    }
-    this.servicioAnalisis.analizar({"usuarios":this.lista_id}).subscribe(
+    this.servicioUsuario.eliminarUsuarios({"eliminar":this.estudiantes}).subscribe(
       (data)=> {
-        this.resultados=data
-        console.log(this.resultados)
+        this.servicioUsuario.obtenerUsuarios().subscribe(
+          (data)=> {
+            this.usuarios=data
+          },(error)=> {
+            console.log(error)
+          }   
+        )
       },(error)=> {
         console.log(error)
       }   
     )
+
+   
   }
+
+  onChange(usuario:any, index: any):void {
+    if(this.aceptacion[index]) {
+      this.estudiantes.push(usuario);
+    } else {
+      let index = this.estudiantes.indexOf(usuario);
+      this.estudiantes.splice(index,1);
+    }
+}
 }

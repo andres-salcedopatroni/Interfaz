@@ -24,4 +24,10 @@ export class UsersService {
 
   }
 
+  eliminarUsuarios(estudiantes:any):Observable<any>{
+
+    return this.http.delete<any>(this.direccion+"/eliminar",estudiantes);
+
+  }
+
 }
