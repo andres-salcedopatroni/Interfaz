@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AnalisisService } from 'src/app/services/analisis.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -13,7 +14,7 @@ export class PrincipalComponent implements OnInit {
   resultados:any;
   lista_id:any=[];
   
-  constructor(private servicioUsuario: UsersService,private servicioAnalisis: AnalisisService) { 
+  constructor(private servicioUsuario: UsersService,private servicioAnalisis: AnalisisService, private router:Router) { 
 
     this.servicioUsuario.obtenerUsuarios().subscribe(
       (data)=> {
@@ -26,6 +27,10 @@ export class PrincipalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  
+  verEstudiante(usuario:any): void {
+    this.router.navigate(['estudiante/'+usuario]);
   }
 
   analizar(): void{
