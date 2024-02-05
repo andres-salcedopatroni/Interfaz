@@ -18,6 +18,12 @@ export class UsersService {
 
   }
 
+  obtenerUsuario(estudiante:any):Observable<any>{
+
+    return this.http.get<any>(this.direccion+"/obtener/"+estudiante);
+
+  }
+
   ingresarUsuarios(estudiantes:any):Observable<any>{
 
     return this.http.post<any>(this.direccion+"/agregar",estudiantes);

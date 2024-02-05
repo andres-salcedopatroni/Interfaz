@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-ver-estudiante',
@@ -8,7 +9,20 @@ import { Router } from '@angular/router';
 })
 export class VerEstudianteComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  estudiante:any;
+  usuario:any;
+
+  constructor(private router:Router, private servicioUsuario: UsersService, private route: ActivatedRoute) { 
+
+    this.usuario = this.route.snapshot.paramMap.get('id');
+    this.servicioUsuario.obtenerUsuario(this.usuario).subscribe(
+      (data)=>{
+        this.estudiante=data;
+      },
+      (error)=>{});
+
+
+  }
 
   ngOnInit(): void {
   }
