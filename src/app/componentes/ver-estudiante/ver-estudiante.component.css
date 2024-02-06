@@ -1,9 +1,21 @@
+.estudiante {
+    display: flex;
+    flex-wrap:wrap;
+    height: 86%;
+    width: 100%;
+}
+
 .datos {
     display: flex;
     justify-content:center;
     align-items:center;
-    height: 40%;
-    width: 100%;
+    height: 60%;
+    width: 50%;
+}
+
+.grafica {
+    height: 60%;
+    width: 50%;
 }
 
 .dato {
@@ -11,11 +23,22 @@
     width: 100%;
 }
 
+.nombre {
+    height: 100%;
+    width: 30%;
+}
+
+.valor {
+    height: 100%;
+    width: 70%;
+}
+
 @media screen and (max-width: 450px) {
     
     .datos {        
         flex-direction: column;
         height: 60%;
+        width: 100%;
     }
 
     .dato {
