@@ -27,8 +27,6 @@ export class VerEstudianteComponent implements OnInit {
     chart: {
       type: 'scatter',
       height: "100%",
-      margin: 0,
-      width: "30%"
     },
     title: {
       text: 'Sample Scatter Plot'
