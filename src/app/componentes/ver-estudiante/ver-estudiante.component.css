@@ -18,6 +18,11 @@
     width: 50%;
 }
 
+#grafica {
+    height: 100%;
+    width: 200%;
+}
+
 .dato {
     height: 18%;
     width: 100%;

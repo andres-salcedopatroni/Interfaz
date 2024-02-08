@@ -26,7 +26,6 @@ export class VerEstudianteComponent implements OnInit {
   public options: any = {
     chart: {
       type: 'scatter',
-      height: "100%",
     },
     title: {
       text: 'Sample Scatter Plot'
