@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-ver-estudiante',
@@ -11,6 +12,14 @@ export class VerEstudianteComponent implements OnInit {
 
   estudiante:any;
   usuario:any;
+  chartOptions: Highcharts.Options = {
+    series: [
+      {
+        type: "line",
+        data: [1, 2, 3, 4, 5]
+      }
+    ]
+};
 
   constructor(private router:Router, private servicioUsuario: UsersService, private route: ActivatedRoute) { 
 
@@ -20,7 +29,8 @@ export class VerEstudianteComponent implements OnInit {
         this.estudiante=data;
       },
       (error)=>{});
-
+    let chart =new Highcharts.Chart('container', this.chartOptions)
+    
 
   }
 
