@@ -4,11 +4,13 @@ import { PrincipalComponent } from './componentes/principal/principal.component'
 import { IngresarEstudianteComponent } from './componentes/ingresar-estudiante/ingresar-estudiante.component';
 import { EliminarEstudianteComponent } from './componentes/eliminar-estudiante/eliminar-estudiante.component';
 import { VerEstudianteComponent } from './componentes/ver-estudiante/ver-estudiante.component';
+import { ModificarEstudianteComponent } from './componentes/modificar-estudiante/modificar-estudiante.component';
 
 const routes: Routes = [
   { path: 'ingresar-estudiantes', component: IngresarEstudianteComponent},
   { path: 'eliminar-estudiantes', component: EliminarEstudianteComponent},
   { path: 'estudiante/:id', component: VerEstudianteComponent},
+  { path: 'modificar-estudiantes', component: ModificarEstudianteComponent},
   { path: '**', component: PrincipalComponent},];
 
 @NgModule({

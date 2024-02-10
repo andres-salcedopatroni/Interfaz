@@ -9,6 +9,7 @@ import { IngresarEstudianteComponent } from './componentes/ingresar-estudiante/i
 import { FormsModule } from '@angular/forms';
 import { EliminarEstudianteComponent } from './componentes/eliminar-estudiante/eliminar-estudiante.component';
 import { VerEstudianteComponent } from './componentes/ver-estudiante/ver-estudiante.component';
+import { ModificarEstudianteComponent } from './componentes/modificar-estudiante/modificar-estudiante.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { VerEstudianteComponent } from './componentes/ver-estudiante/ver-estudia
     PrincipalComponent,
     IngresarEstudianteComponent,
     EliminarEstudianteComponent,
-    VerEstudianteComponent
+    VerEstudianteComponent,
+    ModificarEstudianteComponent
   ],
   imports: [
     BrowserModule,

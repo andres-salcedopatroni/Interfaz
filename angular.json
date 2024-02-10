@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "Interfaz"
+  "defaultProject": "Interfaz",
+  "cli": {
+    "analytics": false
+  }
 }
