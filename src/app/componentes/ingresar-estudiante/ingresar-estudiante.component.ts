@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AnalisisService } from 'src/app/services/analisis.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class IngresarEstudianteComponent implements OnInit {
   correo:any;
   celular:any;
   
-  constructor(private servicioUsuario: UsersService, private router:Router) { }
+  constructor(private servicioUsuario: UsersService, private router:Router, private servicioAnalisis: AnalisisService) { }
 
   ngOnInit(): void {
   }
@@ -30,7 +31,13 @@ export class IngresarEstudianteComponent implements OnInit {
         "correo":this.correo,
         "celular":this.celular}).subscribe(
       (data)=> {
-        this.router.navigate(['**']);
+        this.servicioAnalisis.obtenerTweets({"usuario":this.usuario}).subscribe(
+          (data)=> {
+            this.router.navigate(['**']);
+          },(error)=> {
+            console.log(error)
+          }   
+        )
       },(error)=> {
         console.log(error)
       }   

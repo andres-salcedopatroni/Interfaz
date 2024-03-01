@@ -7,13 +7,20 @@ import { Observable } from 'rxjs';
 })
 export class AnalisisService {
 
-  private direccion="http://localhost:5002/api"
+  //private direccion="http://localhost:5002/api"
+  private direccion="https://andressalcedo2023.pythonanywhere.com"
 
   constructor(private http: HttpClient) { }
 
   analizar(usuarios:any):Observable  <any>{
 
     return this.http.post<any>(this.direccion,usuarios);
+
+  }
+
+  obtenerTweets(usuario:any):Observable  <any>{
+
+    return this.http.post<any>(this.direccion+"/tweets",usuario);
 
   }
 
