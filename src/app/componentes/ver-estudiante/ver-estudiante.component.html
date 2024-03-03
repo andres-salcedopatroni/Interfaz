@@ -32,69 +32,10 @@
               <th>Fecha</th>
               <th>Tipo</th>
             </tr>
-            <tr>
-              <td>Mensaje</td>
-              <td>1</td>
-              <td>2</td>
-            </tr>
-            <tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>  
-            </tr>
-            <tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
-            </tr><tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
-            </tr><tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
-            </tr><tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
-            </tr><tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
-            </tr><tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
-            </tr><tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Mensaje</td>
-                <td>1</td>
-                <td>2</td>
+            <tr *ngFor="let m of mensajes">
+              <td>{{m.mensaje}}</td>
+              <td>{{m.fecha | date:'dd/MM/yyyy'}}</td>
+              <td>{{m.estado}}</td>
             </tr>
           </table>
     </div>

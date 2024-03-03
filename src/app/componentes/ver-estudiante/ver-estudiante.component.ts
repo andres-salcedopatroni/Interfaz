@@ -23,6 +23,7 @@ export class VerEstudianteComponent implements OnInit {
 
   estudiante:any;
   usuario:any;
+  mensajes:any;
   public options: any = {
     chart: {
       type: 'scatter',
@@ -47,7 +48,8 @@ export class VerEstudianteComponent implements OnInit {
     this.usuario = this.route.snapshot.paramMap.get('id');
     this.servicioUsuario.obtenerUsuario(this.usuario).subscribe(
       (data)=>{
-        this.estudiante=data;
+        this.estudiante=data.estudiante;
+        this.mensajes=data.tweets;
       },
       (error)=>{});
     
