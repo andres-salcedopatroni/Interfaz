@@ -35,11 +35,13 @@ export class VerEstudianteComponent implements OnInit {
     credits: {
       enabled: false
     },
+    xAxis: {
+      type: 'datetime',},
     series: [
       {
         name: 'Abnormal',
         turboThreshold: 500000,
-        data: [[new Date('2018-02-05 18:38:31').getTime(), 7]]
+        data: [[new Date('2018-02-05 18:38:31'), 7],[new Date('2018-02-05 18:38:30'), 6]]
       }
     ]
   }
