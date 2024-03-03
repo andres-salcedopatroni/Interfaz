@@ -25,7 +25,9 @@ export class VerEstudianteComponent implements OnInit {
   usuario:any;
   mensajes:any;
   fechas:any=[];
-  public options: any = {
+  graficoDatos:any=[];
+  mostrar:boolean=false;
+  options: any = {
     chart: {
       type: 'scatter',
     },
@@ -36,12 +38,16 @@ export class VerEstudianteComponent implements OnInit {
       enabled: false
     },
     xAxis: {
-      type: 'datetime',},
+      type: 'datetime',
+      dateTimeLabelFormats: {
+        minute: '%d %b %Y'
+    }, startOnTick: true,
+    endOnTick: true,
+    showLastLabel: true,},
     series: [
       {
         name: 'Abnormal',
-        turboThreshold: 500000,
-        data: [[new Date('2018-02-05 18:38:31'), 7],[new Date('2018-02-05 18:38:30'), 6]]
+        data: this.graficoDatos
       }
     ]
   }
@@ -51,14 +57,34 @@ export class VerEstudianteComponent implements OnInit {
     this.usuario = this.route.snapshot.paramMap.get('id');
     this.servicioUsuario.obtenerUsuario(this.usuario).subscribe(
       (data)=>{
+        this.mostrar=true;
         this.estudiante=data.estudiante;
         this.mensajes=data.tweets;
+        var fechas:any=[];
+        var valores:any=[];
+        for (var value of this.mensajes) {
+          if(fechas.indexOf(value.fecha)==-1){
+            fechas.push(value.fecha);
+            valores.push(value.estado);
+          }
+          else{
+            var index=fechas.indexOf(value.fecha);
+            valores[index]=valores[index]+value.estado;
+          }
+        }
+        for (var value of fechas) {
+          var index=fechas.indexOf(value);
+          this.graficoDatos.push([new Date(fechas[index]).getTime(),valores[index]]);
+        }
+        Highcharts.chart('grafica', this.options); 
       },
       (error)=>{});
     
   }
 
   ngOnInit(): void {
+    console.log(this.graficoDatos);
+    
    Highcharts.chart('grafica', this.options); 
   }
 
