@@ -24,6 +24,7 @@ export class VerEstudianteComponent implements OnInit {
   estudiante:any;
   usuario:any;
   mensajes:any;
+  fechas:any=[];
   public options: any = {
     chart: {
       type: 'scatter',
