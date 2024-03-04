@@ -21,6 +21,10 @@
             <div class="valor">{{estudiante.celular}}</div>
         </div>   
     </div>
+    <div class="pieChartGrafica">
+        <div id="pieChart">     
+        </div>
+    </div>
     <div class="grafica">
         <div id="grafica">     
         </div>
@@ -34,7 +38,7 @@
             </tr>
             <tr *ngFor="let m of mensajes">
               <td>{{m.mensaje}}</td>
-              <td>{{m.fecha | date:'dd/MM/yyyy'}}</td>
+              <td>{{m.fecha | date:'dd/MM/yyyy':'GMT'}}</td>
               <td>{{m.estado}}</td>
             </tr>
           </table>

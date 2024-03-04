@@ -13,9 +13,14 @@
     width: 50%;
 }
 
-.grafica {
+.pieChartGrafica{
     height: 60%;
     width: 50%;
+}
+
+.grafica {
+    height: 60%;
+    width: 100%;
 }
 
 .mensajes {
@@ -23,6 +28,11 @@
     justify-content:center; 
     flex-grow: 1;
     height: 60%;
+    width: 100%;
+}
+
+#pieChart {
+    height: 100%;
     width: 100%;
 }
 
@@ -57,7 +67,7 @@
         width: 100%;
     }
 
-    #grafica {
+    #pieChart {
         height: 100%;
         width: 200%;
     }
