@@ -31,13 +31,7 @@ export class IngresarEstudianteComponent implements OnInit {
         "correo":this.correo,
         "celular":this.celular}).subscribe(
       (data)=> {
-        this.servicioAnalisis.obtenerTweets({"usuario":this.usuario}).subscribe(
-          (data)=> {
-            this.router.navigate(['**']);
-          },(error)=> {
-            console.log(error)
-          }   
-        )
+        this.router.navigate(['**']);
       },(error)=> {
         console.log(error)
       }   
