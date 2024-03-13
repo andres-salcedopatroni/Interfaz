@@ -33,10 +33,11 @@ export class IngresarEstudianteComponent implements OnInit {
         "correo":this.correo,
         "celular":this.celular}).subscribe(
       (data)=> {
+        this.mensajeErrorVisible=false;
         this.router.navigate(['**']);
       },(error)=> {
         this.mensajeErrorVisible=true;
-        this.mensajeError=error;
+        this.mensajeError=error.mensaje;
       }   
     )
 
