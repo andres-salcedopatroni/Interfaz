@@ -15,6 +15,8 @@ export class IngresarEstudianteComponent implements OnInit {
   codigo:any;
   correo:any;
   celular:any;
+  mensajeErrorVisible:boolean=false;
+  mensajeError:string='';
   
   constructor(private servicioUsuario: UsersService, private router:Router, private servicioAnalisis: AnalisisService) { }
 
@@ -33,7 +35,8 @@ export class IngresarEstudianteComponent implements OnInit {
       (data)=> {
         this.router.navigate(['**']);
       },(error)=> {
-        console.log(error)
+        this.mensajeErrorVisible=true;
+        this.mensajeError=error;
       }   
     )
 

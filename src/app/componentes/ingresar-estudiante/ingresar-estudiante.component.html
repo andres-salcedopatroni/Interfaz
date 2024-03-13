@@ -16,4 +16,7 @@
       <button (click)="ingresar()">Ingresar</button>
     </div>
   </div>
+  <div *ngIf="mensajeErrorVisible" class="mensajeError">
+    {{mensajeError}}
+  </div>
 </div>
