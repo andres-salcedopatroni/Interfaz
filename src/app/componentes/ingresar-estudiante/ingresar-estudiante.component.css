@@ -4,35 +4,48 @@
     align-items:center;
     flex-shrink: 0;
     flex-wrap: wrap;
-    height: 86%;
+    height: 94%;
     width: 100%;
 }
 
 .contenidoFormulario {
-    height: 70%;
-    width: 60%;
-}
-
-.mensajeError {
-    height: 30%;
-    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    height: 80%;
+    width: 100%; 
     background-color: aqua;
 }
 
+.mensajeError {
+    display: flex;
+    flex-grow: 0;
+    height: 20%;
+    width: 100%;
+    background-color: black;
+    color: red;
+}
+
 .ingreso {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 0;
     height: 80%;
     width: 100%;
 }
 
 .casilla {
-    height: 9.5%;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
     width: 100%;
 }
 
 .casilla *{
-    height: 100%;
+    height: 70%;
     width: 100%;
-    border: outset
+    border: inset
 }
 
 .boton {

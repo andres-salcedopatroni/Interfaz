@@ -1,22 +1,32 @@
 <div class="formulario">
   <div class="contenidoFormulario">
     <div class="ingreso">
-      <div class="casilla">Nombre</div>
-      <div class="casilla"><input type="text" [(ngModel)]="nombre"></div>
-      <div class="casilla">Usuario</div>
-      <div class="casilla"><input type="text" [(ngModel)]="usuario"></div>
-      <div class="casilla">Codigo</div>
-      <div class="casilla"><input type="text" [(ngModel)]="codigo"></div>
-      <div class="casilla">Correo</div>
-      <div class="casilla"><input type="email" [(ngModel)]="correo"></div>
-      <div class="casilla">Celular</div>
-      <div class="casilla"><input type="tel" [(ngModel)]="celular"></div>
+      <div class="campo">
+        <div class="casilla">Nombre</div>
+        <div class="casilla"><input type="text" [(ngModel)]="nombre"></div>
+      </div>
+      <div class="campo">
+        <div class="casilla">Usuario</div>
+        <div class="casilla"><input type="text" [(ngModel)]="usuario"></div>
+      </div>
+      <div class="campo">
+        <div class="casilla">Codigo</div>
+        <div class="casilla"><input type="text" [(ngModel)]="codigo"></div>
+      </div>
+      <div class="campo">
+        <div class="casilla">Correo</div>
+        <div class="casilla"><input type="email" [(ngModel)]="correo"></div>
+      </div>
+      <div class="campo">
+        <div class="casilla">Celular</div>
+        <div class="casilla"><input type="tel" [(ngModel)]="celular"></div>
+      </div>
     </div>
     <div class="boton">
       <button (click)="ingresar()">Ingresar</button>
     </div>
   </div>
   <div *ngIf="mensajeErrorVisible" class="mensajeError">
-    {{mensajeError|json}}
+    {{mensajeError}}
   </div>
 </div>
