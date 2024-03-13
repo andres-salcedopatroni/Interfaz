@@ -37,7 +37,7 @@ export class IngresarEstudianteComponent implements OnInit {
         this.router.navigate(['**']);
       },(error)=> {
         this.mensajeErrorVisible=true;
-        this.mensajeError=error.mensaje;
+        this.mensajeError=error['mensaje'];
       }   
     )
 
