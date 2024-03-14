@@ -15,6 +15,7 @@ export class IngresarEstudianteComponent implements OnInit {
   codigo:any;
   correo:any;
   celular:any;
+  escuela:any;
   mensajeErrorVisible:boolean=false;
   mensajeError:string='';
   
@@ -31,7 +32,9 @@ export class IngresarEstudianteComponent implements OnInit {
         "usuario":this.usuario,
         "codigo":this.codigo,
         "correo":this.correo,
-        "celular":this.celular}).subscribe(
+        "celular":this.celular,
+        "escuela":this.escuela
+      }).subscribe(
       (data)=> {
         this.mensajeErrorVisible=false;
         this.router.navigate(['**']);
