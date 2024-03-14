@@ -38,9 +38,11 @@
 }
 
 .casilla *{
-    height: 70%;
+    height: 80%;
     width: 80%;
     border: inset;
+    background-color: rgb(250, 246, 246);
+    box-sizing:border-box;
 }
 
 .boton {
