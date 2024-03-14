@@ -153,6 +153,22 @@ export class VerEstudianteComponent implements OnInit {
    Highcharts.chart('pieChart', this.pieChartOptions);
   }
 
-  
+  eliminarEstudiante(): void{
+    
+    this.servicioUsuario.eliminarUsuarios({"eliminar":this.usuario}).subscribe(
+      (data)=> {
+        this.servicioUsuario.obtenerUsuarios().subscribe(
+          (data)=> {
+          },(error)=> {
+            console.log(error)
+          }   
+        )
+      },(error)=> {
+        console.log(error)
+      }   
+    )
+
+   
+  }
 
 }
