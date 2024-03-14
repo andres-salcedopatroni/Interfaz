@@ -15,7 +15,13 @@
       </div>
       <div class="campo">
         <div class="casilla">Escuela</div>
-        <div class="casilla"><input type="text" [(ngModel)]="escuela"></div>
+        <div class="casilla">
+          <select [(ngModel)]="escuela">
+            <option *ngFor="let e of escuelas" [value]="e">
+              {{e}}
+            </option>
+          </select>
+        </div>
       </div>
       <div class="campo">
         <div class="casilla">Correo</div>

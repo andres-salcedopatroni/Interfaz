@@ -15,7 +15,8 @@ export class IngresarEstudianteComponent implements OnInit {
   codigo:any;
   correo:any;
   celular:any;
-  escuela:any;
+  escuela:string='Ingeniería de Sistemas';
+  escuelas:Array<string>=['Ingeniería de Sistemas','Ingeniería de Software']
   mensajeErrorVisible:boolean=false;
   mensajeError:string='';
   
