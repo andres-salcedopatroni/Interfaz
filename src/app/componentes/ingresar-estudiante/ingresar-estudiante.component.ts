@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AnalisisService } from 'src/app/services/analisis.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -8,25 +7,25 @@ import { UsersService } from 'src/app/services/users.service';
   templateUrl: './ingresar-estudiante.component.html',
   styleUrls: ['./ingresar-estudiante.component.css']
 })
+
 export class IngresarEstudianteComponent implements OnInit {
 
-  nombre:any;
-  usuario:any;
-  codigo:any;
-  correo:any;
-  celular:any;
+  nombre?:string;
+  usuario?:string;
+  codigo?:string;
+  correo?:string;
+  celular?:number;
   escuela:string='Ingeniería de Sistemas';
   escuelas:Array<string>=['Ingeniería de Sistemas','Ingeniería de Software']
   mensajeErrorVisible:boolean=false;
   mensajeError:string='';
   
-  constructor(private servicioUsuario: UsersService, private router:Router, private servicioAnalisis: AnalisisService) { }
+  constructor(private servicioUsuario: UsersService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
   ingresar(): void {
-
     this.servicioUsuario.ingresarUsuarios(
       {
         "nombre":this.nombre,
@@ -35,7 +34,8 @@ export class IngresarEstudianteComponent implements OnInit {
         "correo":this.correo,
         "celular":this.celular,
         "escuela":this.escuela
-      }).subscribe(
+      }
+    ).subscribe(
       (data)=> {
         this.mensajeErrorVisible=false;
         this.router.navigate(['**']);

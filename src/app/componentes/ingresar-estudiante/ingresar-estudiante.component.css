@@ -38,7 +38,7 @@
 }
 
 .casilla *{
-    height: 80%;
+    height: 90%;
     width: 80%;
     border: inset;
     background-color: rgb(250, 246, 246);
