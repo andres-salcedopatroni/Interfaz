@@ -122,6 +122,8 @@ export class VerEstudianteComponent implements OnInit {
     this.servicioUsuario.obtenerUsuario(this.usuario).subscribe(
       (data)=>{
         this.mostrar=true;
+        var t_TweetsDepresivos=0;
+        var t_TweetsNoDepresivos=0;
         Highcharts.chart('pieChart', this.pieChartOptions);
         Highcharts.chart('pieChart2', this.pieChartOptions);
         this.estudiante=data.estudiante;
@@ -129,6 +131,10 @@ export class VerEstudianteComponent implements OnInit {
         var fechas:any=[];
         var valores:any=[];
         for (var value of this.mensajes) {
+          if(value.estado=1)
+            t_TweetsDepresivos= t_TweetsDepresivos + 1
+          else
+            t_TweetsNoDepresivos = t_TweetsNoDepresivos + 1
           var fecha_peru = new Date(value.fecha)
           var mes=''+(fecha_peru.getMonth()+1);
           var dia=''+fecha_peru.getDate();
@@ -152,6 +158,9 @@ export class VerEstudianteComponent implements OnInit {
           var index=fechas.indexOf(value);
           this.graficoDatos.push([fechas[index],valores[index]]);
         }
+        console.log(t_TweetsDepresivos)
+        console.log(t_TweetsNoDepresivos)
+        console.log(Math.round(32/33 * 1000) / 10)
         Highcharts.chart('grafica', this.options); 
       },
       (error)=>{});
