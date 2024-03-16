@@ -1,19 +1,41 @@
 .estudiante {
     display: flex;
-    flex-wrap:wrap;
-    height: 86%;
+    flex-wrap: wrap;
+    height: 94%;
     width: 100%;
 }
 
 .datos {
     display: flex;
-    align-items:center;
-    flex-direction: column;
-    height: 60%;
-    width: 50%;
+    flex-wrap: wrap;
+    height: 40%;
+    width: 100%;
+}
+
+.dato {
+    display: flex;
+    flex-grow: 1;
+    width: 30%;
+}
+
+.nombre {
+    display: flex;
+    justify-content:center;
+    align-items:center; 
+    height: 100%;
+    width: 30%;
+}
+
+.valor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 70%;
 }
 
 .pieChartGrafica{
+    flex-grow: 1;
     height: 60%;
     width: 50%;
 }
@@ -41,25 +63,7 @@
     width: 100%;
 }
 
-.dato {
-    display: flex;
-    justify-content:center; 
-    align-items:center;
-    height: 20%;
-    width: 100%;
-}
 
-.nombre {
-    text-align: center;
-    height: 100%;
-    width: 30%;
-}
-
-.valor {
-    text-align: center;
-    height: 100%;
-    width: 70%;
-}
 
 @media screen and (max-width: 450px) {
     

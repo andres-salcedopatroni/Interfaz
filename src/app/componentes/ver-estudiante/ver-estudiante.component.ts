@@ -51,6 +51,7 @@ export class VerEstudianteComponent implements OnInit {
       }
     ]
   }
+  
   pieChartOptions:any={
     chart: {
         plotBackgroundColor: null,
@@ -59,8 +60,8 @@ export class VerEstudianteComponent implements OnInit {
         type: 'pie'
     },
     title: {
-        text: 'Browser market shares in May, 2020',
-        align: 'left'
+        text: 'Porcentaje de tweets depresivos',
+        align: 'center'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -86,7 +87,6 @@ export class VerEstudianteComponent implements OnInit {
         data: [{
             name: 'Chrome',
             y: 70.67,
-            sliced: true,
             selected: true
         }, {
             name: 'Edge',
@@ -122,23 +122,35 @@ export class VerEstudianteComponent implements OnInit {
     this.servicioUsuario.obtenerUsuario(this.usuario).subscribe(
       (data)=>{
         this.mostrar=true;
+        Highcharts.chart('pieChart', this.pieChartOptions);
+        Highcharts.chart('pieChart2', this.pieChartOptions);
         this.estudiante=data.estudiante;
         this.mensajes=data.tweets;
         var fechas:any=[];
         var valores:any=[];
         for (var value of this.mensajes) {
-          if(fechas.indexOf(value.fecha)==-1){
-            fechas.push(value.fecha);
+          var fecha_peru = new Date(value.fecha)
+          var mes=''+(fecha_peru.getMonth()+1);
+          var dia=''+fecha_peru.getDate();
+          if(fecha_peru.getMonth()+1<10)
+          mes='0'+ mes
+          if(fecha_peru.getDate()<10)
+          dia='0'+ dia
+          var fecha_prueba=new Date(fecha_peru.getFullYear()+'-'+mes+'-'+dia+'T05:00:00.000Z')
+          console.log(fechas)
+          console.log(fechas.indexOf(fecha_prueba))
+          if(fechas.indexOf(fecha_prueba.getTime())==-1){
+            fechas.push(fecha_prueba.getTime());
             valores.push(value.estado);
           }
           else{
-            var index=fechas.indexOf(value.fecha);
+            var index=fechas.indexOf(fecha_prueba.getTime());
             valores[index]=valores[index]+value.estado;
           }
         }
         for (var value of fechas) {
           var index=fechas.indexOf(value);
-          this.graficoDatos.push([new Date(fechas[index]).getTime(),valores[index]]);
+          this.graficoDatos.push([fechas[index],valores[index]]);
         }
         Highcharts.chart('grafica', this.options); 
       },
@@ -150,7 +162,7 @@ export class VerEstudianteComponent implements OnInit {
     console.log(this.graficoDatos);
     
    Highcharts.chart('grafica', this.options); 
-   Highcharts.chart('pieChart', this.pieChartOptions);
+
   }
 
   eliminarEstudiante(): void{
