@@ -20,7 +20,7 @@ noData(Highcharts);
   styleUrls: ['./ver-estudiante.component.css']
 })
 export class VerEstudianteComponent implements OnInit {
-
+  
   estudiante:any;
   usuario:any;
   mensajes:any;
@@ -114,24 +114,25 @@ export class VerEstudianteComponent implements OnInit {
             y: 2.6
         }]
     }]
-}
+  }
 
   constructor(private router:Router, private servicioUsuario: UsersService, private route: ActivatedRoute) { 
 
     this.usuario = this.route.snapshot.paramMap.get('id');
     this.servicioUsuario.obtenerUsuario(this.usuario).subscribe(
       (data)=>{
-        this.mostrar=true;
-        var t_TweetsDepresivos=0;
+      this.mostrar=true;
+      var t_TweetsDepresivos=0;
         var t_TweetsNoDepresivos=0;
         Highcharts.chart('pieChart', this.pieChartOptions);
         Highcharts.chart('pieChart2', this.pieChartOptions);
         this.estudiante=data.estudiante;
         this.mensajes=data.tweets;
+        console.log(data.tweets);
         var fechas:any=[];
         var valores:any=[];
         for (var value of this.mensajes) {
-          if(value.estado=1)
+          if(value.estado==1)
             t_TweetsDepresivos= t_TweetsDepresivos + 1
           else
             t_TweetsNoDepresivos = t_TweetsNoDepresivos + 1
@@ -158,13 +159,62 @@ export class VerEstudianteComponent implements OnInit {
           var index=fechas.indexOf(value);
           this.graficoDatos.push([fechas[index],valores[index]]);
         }
-        console.log(t_TweetsDepresivos)
-        console.log(t_TweetsNoDepresivos)
-        console.log(Math.round(32/33 * 1000) / 10)
-        Highcharts.chart('grafica', this.options); 
+        if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
+          var p_TweetsDepresivos = Math.round(t_TweetsDepresivos / (t_TweetsDepresivos + t_TweetsNoDepresivos) * 1000) / 10;
+          var p_TweetsNoDepresivos = 100 - p_TweetsDepresivos;
+          var seriesPieData=[{
+            name: 'Tweets depresivos',
+            y: p_TweetsDepresivos,
+            selected: true
+          }, {
+            name: 'Tweets no depresivos',
+            y: p_TweetsNoDepresivos
+          }];
+          this.dibujarPieChart('grafica',seriesPieData);
+        }
       },
       (error)=>{});
     
+  }
+
+  dibujarPieChart(identificador:string,datos:any): void{
+    
+    var caracteristicas:any = {
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+      },
+      title: {
+        text: 'Porcentaje de tweets depresivos',
+        align: 'center'
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+      },
+      accessibility: {
+        point: {
+          valueSuffix: '%'
+        }
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+          }
+        }
+      },
+      series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: datos
+      }]
+    };
+    Highcharts.chart(identificador,caracteristicas);
   }
 
   ngOnInit(): void {
