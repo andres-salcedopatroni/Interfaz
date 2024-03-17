@@ -123,7 +123,12 @@ export class VerEstudianteComponent implements OnInit {
       (data)=>{
       this.mostrar=true;
       var t_TweetsDepresivos=0;
-        var t_TweetsNoDepresivos=0;
+      var t_TweetsDepresivosMensual=0;
+      var t_TweetsNoDepresivos=0;
+      var t_TweetsNoDepresivosMensual=0;
+      var mes_anterior= new Date();
+      mes_anterior.setMonth(mes_anterior.getMonth()-1)
+      mes_anterior=this.obtenerFechaInicioDia(mes_anterior)
         Highcharts.chart('pieChart', this.pieChartOptions);
         Highcharts.chart('pieChart2', this.pieChartOptions);
         this.estudiante=data.estudiante;
@@ -132,20 +137,20 @@ export class VerEstudianteComponent implements OnInit {
         var fechas:any=[];
         var valores:any=[];
         for (var value of this.mensajes) {
-          if(value.estado==1)
-            t_TweetsDepresivos= t_TweetsDepresivos + 1
-          else
-            t_TweetsNoDepresivos = t_TweetsNoDepresivos + 1
           var fecha_peru = new Date(value.fecha)
-          var mes=''+(fecha_peru.getMonth()+1);
-          var dia=''+fecha_peru.getDate();
-          if(fecha_peru.getMonth()+1<10)
-          mes='0'+ mes
-          if(fecha_peru.getDate()<10)
-          dia='0'+ dia
-          var fecha_prueba=new Date(fecha_peru.getFullYear()+'-'+mes+'-'+dia+'T05:00:00.000Z')
-          console.log(fechas)
-          console.log(fechas.indexOf(fecha_prueba))
+          if(value.estado==1){
+            t_TweetsDepresivos= t_TweetsDepresivos + 1
+            if(mes_anterior<=fecha_peru)
+            t_TweetsDepresivosMensual=t_TweetsDepresivosMensual+1;
+          }
+          else{
+            t_TweetsNoDepresivos = t_TweetsNoDepresivos + 1
+            if(mes_anterior<=fecha_peru)
+            t_TweetsNoDepresivosMensual=t_TweetsNoDepresivosMensual+1;
+          }
+          var fecha_prueba=this.obtenerFechaInicioDia(fecha_peru)
+          console.log(value.fecha)
+          console.log(fecha_prueba)
           if(fechas.indexOf(fecha_prueba.getTime())==-1){
             fechas.push(fecha_prueba.getTime());
             valores.push(value.estado);
@@ -159,62 +164,77 @@ export class VerEstudianteComponent implements OnInit {
           var index=fechas.indexOf(value);
           this.graficoDatos.push([fechas[index],valores[index]]);
         }
-        if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
-          var p_TweetsDepresivos = Math.round(t_TweetsDepresivos / (t_TweetsDepresivos + t_TweetsNoDepresivos) * 1000) / 10;
-          var p_TweetsNoDepresivos = 100 - p_TweetsDepresivos;
-          var seriesPieData=[{
-            name: 'Tweets depresivos',
-            y: p_TweetsDepresivos,
-            selected: true
-          }, {
-            name: 'Tweets no depresivos',
-            y: p_TweetsNoDepresivos
-          }];
-          this.dibujarPieChart('grafica',seriesPieData);
-        }
+        this.dibujarPieChart(t_TweetsDepresivos,t_TweetsNoDepresivos,'grafica');
+        this.dibujarPieChart(t_TweetsDepresivosMensual,t_TweetsNoDepresivosMensual,'grafica_2');
+        
       },
       (error)=>{});
     
   }
 
-  dibujarPieChart(identificador:string,datos:any): void{
+  obtenerFechaInicioDia(fecha:Date): Date{
     
-    var caracteristicas:any = {
-      chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-      },
-      title: {
-        text: 'Porcentaje de tweets depresivos',
-        align: 'center'
-      },
-      tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-      },
-      accessibility: {
-        point: {
-          valueSuffix: '%'
-        }
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: true,
-            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+    var mes=''+(fecha.getMonth()+1);
+    var dia=''+fecha.getDate();
+    if(fecha.getMonth()+1<10)
+      mes='0'+ mes;
+    if(fecha.getDate()<10)
+      dia='0'+ dia;
+    var fecha_inicio=new Date(fecha.getFullYear()+'-'+mes+'-'+dia+'T05:00:00.000Z');
+    return fecha_inicio;
+  
+  }
+
+  dibujarPieChart(t_TweetsDepresivos:number,t_TweetsNoDepresivos:number,identificador:string): void{
+    
+    if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
+      var p_TweetsDepresivos = Math.round(t_TweetsDepresivos / (t_TweetsDepresivos + t_TweetsNoDepresivos) * 1000) / 10;
+      var p_TweetsNoDepresivos = 100 - p_TweetsDepresivos;
+      var seriesPieData=[{
+        name: 'Tweets depresivos',
+        y: p_TweetsDepresivos,
+        selected: true
+      }, {
+        name: 'Tweets no depresivos',
+        y: p_TweetsNoDepresivos
+      }];
+      var caracteristicas:any = {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+        },
+        title: {
+          text: 'Porcentaje de tweets depresivos y no depresivos',
+          align: 'center'
+        },
+        tooltip: {
+          pointFormat: '<b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+          point: {
+            valueSuffix: '%'
           }
-        }
-      },
-      series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: datos
-      }]
-    };
-    Highcharts.chart(identificador,caracteristicas);
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+          }
+        },
+        series: [{
+          name: 'Tweets',
+          colorByPoint: true,
+          data: seriesPieData
+        }]
+      };
+      Highcharts.chart(identificador,caracteristicas)
+    }
   }
 
   ngOnInit(): void {
