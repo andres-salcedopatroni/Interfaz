@@ -99,8 +99,8 @@ export class VerEstudianteComponent implements OnInit {
           var index=fechas.indexOf(value);
           this.graficoDatos.push([fechas[index],valores[index]]);
         }
-        this.dibujarPieChart(t_TweetsDepresivos,t_TweetsNoDepresivos,'grafica');
-        this.dibujarPieChart(t_TweetsDepresivosMensual,t_TweetsNoDepresivosMensual,'grafica_2');
+        this.dibujarPieChart(t_TweetsDepresivos,t_TweetsNoDepresivos,'grafica','Total');
+        this.dibujarPieChart(t_TweetsDepresivosMensual,t_TweetsNoDepresivosMensual,'grafica_2','Mensual');
         
       },
       (error)=>{});
@@ -120,7 +120,7 @@ export class VerEstudianteComponent implements OnInit {
   
   }
 
-  dibujarPieChart(t_TweetsDepresivos:number,t_TweetsNoDepresivos:number,identificador:string): void{
+  dibujarPieChart(t_TweetsDepresivos:number,t_TweetsNoDepresivos:number,identificador:string,titulo:string): void{
     
     if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
       var p_TweetsDepresivos = Math.round(t_TweetsDepresivos / (t_TweetsDepresivos + t_TweetsNoDepresivos) * 1000) / 10;
@@ -141,7 +141,7 @@ export class VerEstudianteComponent implements OnInit {
           type: 'pie'
         },
         title: {
-          text: 'Porcentaje de tweets depresivos y no depresivos',
+          text: titulo,
           align: 'center'
         },
         tooltip: {
@@ -159,7 +159,8 @@ export class VerEstudianteComponent implements OnInit {
             dataLabels: {
               enabled: true,
               format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
+            },
+            size:'80%'
           }
         },
         series: [{
