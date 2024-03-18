@@ -54,6 +54,9 @@
     background-color:blue;
 }
 
+[hidden] {
+    display: none !important;
+}
 
 .grafica {
     display: flex;
