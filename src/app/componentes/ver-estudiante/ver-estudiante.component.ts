@@ -56,18 +56,18 @@ export class VerEstudianteComponent implements OnInit {
   
 
   constructor(private router:Router, private servicioUsuario: UsersService, private route: ActivatedRoute) { 
-
+    
     this.usuario = this.route.snapshot.paramMap.get('id');
     this.servicioUsuario.obtenerUsuario(this.usuario).subscribe(
       (data)=>{
-      this.mostrar=true;
-      var t_TweetsDepresivos=0;
-      var t_TweetsDepresivosMensual=0;
-      var t_TweetsNoDepresivos=0;
-      var t_TweetsNoDepresivosMensual=0;
-      var mes_anterior= new Date();
-      mes_anterior.setMonth(mes_anterior.getMonth()-1)
-      mes_anterior=this.obtenerFechaInicioDia(mes_anterior)
+        this.mostrar=true;
+        var t_TweetsDepresivos=0;
+        var t_TweetsDepresivosMensual=0;
+        var t_TweetsNoDepresivos=0;
+        var t_TweetsNoDepresivosMensual=0;
+        var mes_anterior= new Date();
+        mes_anterior.setMonth(mes_anterior.getMonth()-1)
+        mes_anterior=this.obtenerFechaInicioDia(mes_anterior)
         this.estudiante=data.estudiante;
         this.mensajes=data.tweets;
         console.log(data.tweets);
@@ -76,14 +76,14 @@ export class VerEstudianteComponent implements OnInit {
         for (var value of this.mensajes) {
           var fecha_peru = new Date(value.fecha)
           if(value.estado==1){
-            t_TweetsDepresivos= t_TweetsDepresivos + 1
+            t_TweetsDepresivos= t_TweetsDepresivos + 1;
             if(mes_anterior<=fecha_peru)
-            t_TweetsDepresivosMensual=t_TweetsDepresivosMensual+1;
+              t_TweetsDepresivosMensual=t_TweetsDepresivosMensual+1;
           }
           else{
-            t_TweetsNoDepresivos = t_TweetsNoDepresivos + 1
+            t_TweetsNoDepresivos = t_TweetsNoDepresivos + 1;
             if(mes_anterior<=fecha_peru)
-            t_TweetsNoDepresivosMensual=t_TweetsNoDepresivosMensual+1;
+              t_TweetsNoDepresivosMensual=t_TweetsNoDepresivosMensual+1;
           }
           var fecha_prueba=this.obtenerFechaInicioDia(fecha_peru)
           console.log(value.fecha)
