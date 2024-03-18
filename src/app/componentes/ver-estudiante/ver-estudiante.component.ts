@@ -182,10 +182,19 @@ export class VerEstudianteComponent implements OnInit {
     }
   }
 
-  dibujarScatterChart(t_TweetsDepresivos:number,t_TweetsNoDepresivos:number,identificador:string,titulo:string): void{
+  dibujarScatterChart(t_TweetsDepresivos:number,t_TweetsNoDepresivos:number,s_TweetsDepresivos:any,identificador:string,titulo:string): void{
 
-    if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){}
-    
+    if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
+      var seriesScatterData=[{
+        name: 'Tweets depresivos',
+        id: 'tweets_depresivos',
+        marker:{
+          symbol: 'circle'
+        },
+        data:s_TweetsDepresivos
+      }]
+    }
+
   }
 
   ngOnInit(): void {
