@@ -134,7 +134,7 @@ export class VerEstudianteComponent implements OnInit {
     if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
       var p_TweetsDepresivos = Math.round(t_TweetsDepresivos / (t_TweetsDepresivos + t_TweetsNoDepresivos) * 1000) / 10;
       var p_TweetsNoDepresivos = 100 - p_TweetsDepresivos;
-      var seriesPieData=[{
+      var seriesPieData = [{
         name: 'Tweets depresivos',
         y: p_TweetsDepresivos,
         selected: true
@@ -185,15 +185,35 @@ export class VerEstudianteComponent implements OnInit {
   dibujarScatterChart(t_TweetsDepresivos:number,t_TweetsNoDepresivos:number,s_TweetsDepresivos:any,identificador:string,titulo:string): void{
 
     if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
-      var seriesScatterData=[{
+      var seriesScatterData = [{
         name: 'Tweets depresivos',
         id: 'tweets_depresivos',
-        marker:{
+        marker: {
           symbol: 'circle'
         },
         data:s_TweetsDepresivos
-      }]
-    }
+      }];
+      var caracteristicas:any = {
+        chart: {
+          type: 'scatter',
+        },
+        title: {
+          text: titulo
+        },
+        credits: {
+          enabled: false
+        },
+        xAxis: {
+          type: 'datetime',
+          dateTimeLabelFormats: {
+            minute: '%d %b %Y'
+          }, 
+          startOnTick: true,
+          endOnTick: true,
+          showLastLabel: true,},
+          series: seriesScatterData
+        }
+      }
 
   }
 
