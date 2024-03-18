@@ -79,6 +79,7 @@ export class VerEstudianteComponent implements OnInit {
         }
         if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
           this.mostrarPieChart1=true;
+          this.dibujarScatterChart(t_TweetsDepresivos,t_TweetsNoDepresivos,this.graficoDatos,'grafica_3','Prueba')
           this.dibujarPieChart(t_TweetsDepresivos,t_TweetsNoDepresivos,'grafica','Total');
         }
         if(t_TweetsDepresivosMensual+t_TweetsNoDepresivosMensual>0){
@@ -88,7 +89,7 @@ export class VerEstudianteComponent implements OnInit {
       },
       (error)=>{}
     );
-    
+
   }
 
   obtenerFechaInicioDia(fecha:Date): Date{
