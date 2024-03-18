@@ -182,6 +182,12 @@ export class VerEstudianteComponent implements OnInit {
     }
   }
 
+  dibujarScatterChart(t_TweetsDepresivos:number,t_TweetsNoDepresivos:number,identificador:string,titulo:string): void{
+
+    if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){}
+    
+  }
+
   ngOnInit(): void {
     console.log(this.graficoDatos);
     
