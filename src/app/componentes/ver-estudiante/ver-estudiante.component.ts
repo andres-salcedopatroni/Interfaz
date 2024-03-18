@@ -29,30 +29,6 @@ export class VerEstudianteComponent implements OnInit {
   mostrarPieChart1:boolean=false;
   mostrarPieChart2:boolean=false;
   mostrar:boolean=false;
-  options: any = {
-    chart: {
-      type: 'scatter',
-    },
-    title: {
-      text: 'Sample Scatter Plot'
-    },
-    credits: {
-      enabled: false
-    },
-    xAxis: {
-      type: 'datetime',
-      dateTimeLabelFormats: {
-        minute: '%d %b %Y'
-    }, startOnTick: true,
-    endOnTick: true,
-    showLastLabel: true,},
-    series: [
-      {
-        name: 'Abnormal',
-        data: this.graficoDatos
-      }
-    ]
-  }
   
 
   constructor(private router:Router, private servicioUsuario: UsersService, private route: ActivatedRoute) { 
@@ -103,16 +79,15 @@ export class VerEstudianteComponent implements OnInit {
         }
         if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
           this.mostrarPieChart1=true;
-        this.dibujarPieChart(t_TweetsDepresivos,t_TweetsNoDepresivos,'grafica','Total');
-
-      }if(t_TweetsDepresivosMensual+t_TweetsNoDepresivosMensual>0){
-        this.mostrarPieChart2=true;
-        this.dibujarPieChart(t_TweetsDepresivosMensual,t_TweetsNoDepresivosMensual,'grafica_2','Mensual');
-      
-      }
-        
+          this.dibujarPieChart(t_TweetsDepresivos,t_TweetsNoDepresivos,'grafica','Total');
+        }
+        if(t_TweetsDepresivosMensual+t_TweetsNoDepresivosMensual>0){
+          this.mostrarPieChart2=true;
+          this.dibujarPieChart(t_TweetsDepresivosMensual,t_TweetsNoDepresivosMensual,'grafica_2','Mensual');
+        }        
       },
-      (error)=>{});
+      (error)=>{}
+    );
     
   }
 
