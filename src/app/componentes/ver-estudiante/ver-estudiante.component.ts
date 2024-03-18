@@ -213,15 +213,12 @@ export class VerEstudianteComponent implements OnInit {
           showLastLabel: true,},
           series: seriesScatterData
         }
+        Highcharts.chart(identificador,caracteristicas); 
       }
 
   }
 
   ngOnInit(): void {
-    console.log(this.graficoDatos);
-    
-   Highcharts.chart('grafica_3', this.options); 
-
   }
 
   eliminarEstudiante(): void{
