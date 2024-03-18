@@ -26,7 +26,8 @@ export class VerEstudianteComponent implements OnInit {
   mensajes:any;
   fechas:any=[];
   graficoDatos:any=[];
-  monstrarPieChart1:boolean=false;
+  mostrarPieChart1:boolean=false;
+  mostrarPieChart2:boolean=false;
   mostrar:boolean=false;
   options: any = {
     chart: {
@@ -101,11 +102,14 @@ export class VerEstudianteComponent implements OnInit {
           this.graficoDatos.push([fechas[index],valores[index]]);
         }
         if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
-          this.monstrarPieChart1=true;
+          this.mostrarPieChart1=true;
         this.dibujarPieChart(t_TweetsDepresivos,t_TweetsNoDepresivos,'grafica','Total');
 
-      }
+      }if(t_TweetsDepresivosMensual+t_TweetsNoDepresivosMensual>0){
+        this.mostrarPieChart2=true;
         this.dibujarPieChart(t_TweetsDepresivosMensual,t_TweetsNoDepresivosMensual,'grafica_2','Mensual');
+      
+      }
         
       },
       (error)=>{});

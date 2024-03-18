@@ -1,5 +1,6 @@
 .estudiante {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     height: 94%;
     width: 100%;
@@ -43,6 +44,16 @@
     height: 60%;
     background-color:red;
 }
+
+.pieChartGrafica2{
+    display: flex;
+    justify-content:center;
+    flex-grow: 1;
+    flex-shrink:0;
+    height: 60%;
+    background-color:blue;
+}
+
 
 .grafica {
     display: flex;

@@ -25,11 +25,11 @@
             <div class="valor">{{estudiante.celular}}</div>
         </div>   
     </div>
-    <div class="pieChartGrafica" [hidden]="monstrarPieChart1">
+    <div class="pieChartGrafica" [hidden]="!mostrarPieChart1" [style.visibility]="mostrarPieChart1 ? 'visible' : 'hidden'">
         <div id="grafica">     
         </div>
     </div>
-    <div class="pieChartGrafica">
+    <div class="pieChartGrafica2" [hidden]="true" >
         <div id="grafica_2">     
         </div>
     </div>
