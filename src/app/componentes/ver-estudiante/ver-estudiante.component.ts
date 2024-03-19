@@ -60,16 +60,6 @@ export class VerEstudianteComponent implements OnInit {
         
         for (var value of this.mensajes) {
           var fecha_peru = new Date(value.fecha)
-          if(value.estado==1){
-            t_TweetsDepresivos= t_TweetsDepresivos + 1;
-            if(mes_anterior<=fecha_peru)
-              t_TweetsDepresivosMensual=t_TweetsDepresivosMensual+1;
-          }
-          else{
-            t_TweetsNoDepresivos = t_TweetsNoDepresivos + 1;
-            if(mes_anterior<=fecha_peru)
-              t_TweetsNoDepresivosMensual=t_TweetsNoDepresivosMensual+1;
-          }
           var fecha_prueba=this.obtenerFechaInicioDia(fecha_peru)
           console.log(value.fecha)
           console.log(fecha_prueba)
@@ -96,8 +86,46 @@ export class VerEstudianteComponent implements OnInit {
             }
           }
           else{
-            var index=f_TweetsDepresivos.indexOf(fecha_prueba.getTime());
-            v__TweetsDepresivos[index]=v__TweetsDepresivos[index]+value.estado;
+            if(value.estado==1){
+              if(f_TweetsDepresivos.indexOf(fecha_prueba.getTime())==-1){
+                t_TweetsDepresivos= t_TweetsDepresivos + 1;
+                f_TweetsDepresivos.push(fecha_prueba.getTime());
+                v__TweetsDepresivos.push(1);
+                if(mes_anterior<=fecha_peru){
+                  t_TweetsDepresivosMensual=t_TweetsDepresivosMensual+1;
+                  f_TweetsDepresivosMensual.push(fecha_prueba.getTime());
+                  v__TweetsDepresivosMensual.push(1);
+                }
+              }
+              else{
+                var index=f_TweetsDepresivos.indexOf(fecha_prueba.getTime());
+                v__TweetsDepresivos[index]=v__TweetsDepresivos[index]+1;
+                if(mes_anterior<=fecha_peru){
+                  index=f_TweetsDepresivosMensual.indexOf(fecha_prueba.getTime());
+                  v__TweetsDepresivosMensual[index]=v__TweetsDepresivosMensual[index]+1;
+                }
+              }
+            }
+            else{
+              if(f_TweetsNoDepresivos.indexOf(fecha_prueba.getTime())==-1){
+                t_TweetsNoDepresivos = t_TweetsNoDepresivos + 1;
+                f_TweetsNoDepresivos.push(fecha_prueba.getTime());
+                v__TweetsNoDepresivos.push(1);
+                if(mes_anterior<=fecha_peru){
+                  t_TweetsNoDepresivosMensual=t_TweetsNoDepresivosMensual+1;
+                  f_TweetsNoDepresivosMensual.push(fecha_prueba.getTime());
+                  v__TweetsNoDepresivosMensual.push(1);
+                }
+              }
+              else{
+                var index=f_TweetsNoDepresivos.indexOf(fecha_prueba.getTime());
+                v__TweetsNoDepresivos[index]=v__TweetsNoDepresivos[index]+1;
+                if(mes_anterior<=fecha_peru){
+                  index=f_TweetsNoDepresivosMensual.indexOf(fecha_prueba.getTime());
+                  v__TweetsNoDepresivosMensual[index]=v__TweetsNoDepresivosMensual[index]+1;
+                }
+              }
+            }
           }
         }
         for (var value of f_TweetsDepresivos) {
