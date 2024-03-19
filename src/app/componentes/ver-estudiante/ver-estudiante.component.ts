@@ -57,7 +57,7 @@ export class VerEstudianteComponent implements OnInit {
         mes_anterior=this.obtenerFechaInicioDia(mes_anterior)
         this.estudiante=data.estudiante;
         this.mensajes=data.tweets;
-        
+        //Clasificando mensajes
         for (var value of this.mensajes) {
           var fecha_peru = new Date(value.fecha)
           var fecha_prueba=this.obtenerFechaInicioDia(fecha_peru)
