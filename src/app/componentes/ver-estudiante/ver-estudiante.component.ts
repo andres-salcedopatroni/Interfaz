@@ -56,7 +56,10 @@ export class VerEstudianteComponent implements OnInit {
         mes_anterior=this.obtenerFechaInicioDia(mes_anterior)
         this.estudiante=data.estudiante;
         this.mensajes=data.tweets;
-        var graficoDatos:any=[];
+        var graficoDatosDepresivos:any=[];
+        var graficoDatosNoDepresivos:any=[];
+        var graficoDatosDepresivosMensual:any=[];
+        var graficoDatosNoDepresivosMensual:any=[];
         //Clasificando mensajes
         for (var value of this.mensajes) {
           var fecha_peru = new Date(value.fecha)
@@ -130,15 +133,28 @@ export class VerEstudianteComponent implements OnInit {
         }
         for (var value of f_TweetsDepresivos) {
           var index=f_TweetsDepresivos.indexOf(value);
-          graficoDatos.push([f_TweetsDepresivos[index],v__TweetsDepresivos[index]]);
+          graficoDatosDepresivos.push([f_TweetsDepresivos[index],v__TweetsDepresivos[index]]);
+        }
+        for (var value of f_TweetsNoDepresivos) {
+          var index=f_TweetsNoDepresivos.indexOf(value);
+          graficoDatosNoDepresivos.push([f_TweetsNoDepresivos[index],v__TweetsNoDepresivos[index]]);
+        }
+        for (var value of f_TweetsDepresivosMensual) {
+          var index=f_TweetsDepresivosMensual.indexOf(value);
+          graficoDatosDepresivosMensual.push([f_TweetsDepresivosMensual[index],v__TweetsDepresivosMensual[index]]);
+        }
+        for (var value of f_TweetsNoDepresivosMensual) {
+          var index=f_TweetsNoDepresivosMensual.indexOf(value);
+          graficoDatosNoDepresivosMensual.push([f_TweetsNoDepresivosMensual[index],v__TweetsNoDepresivosMensual[index]]);
         }
         if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
           this.mostrarPieChart1=true;
-          this.dibujarScatterChart(t_TweetsDepresivos,t_TweetsNoDepresivos,graficoDatos,'grafica_3','Prueba')
+          this.dibujarScatterChart(t_TweetsDepresivos,t_TweetsNoDepresivos,graficoDatosDepresivos,graficoDatosNoDepresivos,'grafica_3','Prueba')
           this.dibujarPieChart(t_TweetsDepresivos,t_TweetsNoDepresivos,'grafica','Total');
         }
         if(t_TweetsDepresivosMensual+t_TweetsNoDepresivosMensual>0){
           this.mostrarPieChart2=true;
+          this.dibujarScatterChart(t_TweetsDepresivos,t_TweetsNoDepresivos,graficoDatosDepresivosMensual,graficoDatosNoDepresivosMensual,'grafica_4','Prueba')
           this.dibujarPieChart(t_TweetsDepresivosMensual,t_TweetsNoDepresivosMensual,'grafica_2','Mensual');
         }        
       },
@@ -213,7 +229,7 @@ export class VerEstudianteComponent implements OnInit {
     }
   }
 
-  dibujarScatterChart(t_TweetsDepresivos:number,t_TweetsNoDepresivos:number,s_TweetsDepresivos:any,identificador:string,titulo:string): void{
+  dibujarScatterChart(t_TweetsDepresivos:number,t_TweetsNoDepresivos:number,s_TweetsDepresivos:any,s_TweetsNoDepresivos:any,identificador:string,titulo:string): void{
 
     if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
       var seriesScatterData = [{
@@ -223,6 +239,13 @@ export class VerEstudianteComponent implements OnInit {
           symbol: 'circle'
         },
         data:s_TweetsDepresivos
+      },{
+        name: 'Tweets no depresivos',
+        id: 'tweets_no_depresivos',
+        marker: {
+          symbol: 'circle'
+        },
+        data:s_TweetsNoDepresivos
       }];
       var caracteristicas:any = {
         chart: {
