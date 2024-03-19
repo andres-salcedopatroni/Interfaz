@@ -73,9 +73,27 @@ export class VerEstudianteComponent implements OnInit {
           var fecha_prueba=this.obtenerFechaInicioDia(fecha_peru)
           console.log(value.fecha)
           console.log(fecha_prueba)
-          if(f_TweetsDepresivos.indexOf(fecha_prueba.getTime())==-1){
-            f_TweetsDepresivos.push(fecha_prueba.getTime());
-            v__TweetsDepresivos.push(value.estado);
+          if(f_TweetsDepresivos.indexOf(fecha_prueba.getTime())==-1 && f_TweetsNoDepresivos.indexOf(fecha_prueba.getTime())==-1){
+            if(value.estado==1){
+              t_TweetsDepresivos= t_TweetsDepresivos + 1;
+              f_TweetsDepresivos.push(fecha_prueba.getTime());
+              v__TweetsDepresivos.push(1);
+              if(mes_anterior<=fecha_peru){
+                t_TweetsDepresivosMensual=t_TweetsDepresivosMensual+1;
+                f_TweetsDepresivosMensual.push(fecha_prueba.getTime());
+                v__TweetsDepresivosMensual.push(1);
+              }
+            }
+            else{
+              t_TweetsNoDepresivos = t_TweetsNoDepresivos + 1;
+              f_TweetsNoDepresivos.push(fecha_prueba.getTime());
+              v__TweetsNoDepresivos.push(1);
+              if(mes_anterior<=fecha_peru){
+                t_TweetsNoDepresivosMensual=t_TweetsNoDepresivosMensual+1;
+                f_TweetsNoDepresivosMensual.push(fecha_prueba.getTime());
+                v__TweetsNoDepresivosMensual.push(1);
+              }
+            }
           }
           else{
             var index=f_TweetsDepresivos.indexOf(fecha_prueba.getTime());
