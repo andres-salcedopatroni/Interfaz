@@ -44,14 +44,20 @@ export class VerEstudianteComponent implements OnInit {
         var t_TweetsNoDepresivosMensual=0; 
         //Scatter Chart
         var f_TweetsDepresivos:any=[];
+        var v__TweetsDepresivos:any=[];
+        var f_TweetsDepresivosMensual:any=[];
+        var v__TweetsDepresivosMensual:any=[];
         var f_TweetsNoDepresivos:any=[];
+        var v__TweetsNoDepresivos:any=[];
+        var f_TweetsNoDepresivosMensual:any=[];
+        var v__TweetsNoDepresivosMensual:any=[];
         //Otros
         var mes_anterior= new Date();
         mes_anterior.setMonth(mes_anterior.getMonth()-1)
         mes_anterior=this.obtenerFechaInicioDia(mes_anterior)
         this.estudiante=data.estudiante;
         this.mensajes=data.tweets;
-        var valores:any=[];
+        
         for (var value of this.mensajes) {
           var fecha_peru = new Date(value.fecha)
           if(value.estado==1){
@@ -69,16 +75,16 @@ export class VerEstudianteComponent implements OnInit {
           console.log(fecha_prueba)
           if(f_TweetsDepresivos.indexOf(fecha_prueba.getTime())==-1){
             f_TweetsDepresivos.push(fecha_prueba.getTime());
-            valores.push(value.estado);
+            v__TweetsDepresivos.push(value.estado);
           }
           else{
             var index=f_TweetsDepresivos.indexOf(fecha_prueba.getTime());
-            valores[index]=valores[index]+value.estado;
+            v__TweetsDepresivos[index]=v__TweetsDepresivos[index]+value.estado;
           }
         }
         for (var value of f_TweetsDepresivos) {
           var index=f_TweetsDepresivos.indexOf(value);
-          this.graficoDatos.push([f_TweetsDepresivos[index],valores[index]]);
+          this.graficoDatos.push([f_TweetsDepresivos[index],v__TweetsDepresivos[index]]);
         }
         if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
           this.mostrarPieChart1=true;
