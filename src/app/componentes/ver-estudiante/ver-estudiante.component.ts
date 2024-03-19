@@ -37,17 +37,20 @@ export class VerEstudianteComponent implements OnInit {
     this.servicioUsuario.obtenerUsuario(this.usuario).subscribe(
       (data)=>{
         this.mostrar=true;
+        //Pie Chart
         var t_TweetsDepresivos=0;
         var t_TweetsDepresivosMensual=0;
         var t_TweetsNoDepresivos=0;
-        var t_TweetsNoDepresivosMensual=0;
+        var t_TweetsNoDepresivosMensual=0; 
+        //Scatter Chart
+        var f_TweetsDepresivos:any=[];
+        var f_TweetsNoDepresivos:any=[];
+        //Otros
         var mes_anterior= new Date();
         mes_anterior.setMonth(mes_anterior.getMonth()-1)
         mes_anterior=this.obtenerFechaInicioDia(mes_anterior)
         this.estudiante=data.estudiante;
         this.mensajes=data.tweets;
-        console.log(data.tweets);
-        var fechas:any=[];
         var valores:any=[];
         for (var value of this.mensajes) {
           var fecha_peru = new Date(value.fecha)
@@ -64,18 +67,18 @@ export class VerEstudianteComponent implements OnInit {
           var fecha_prueba=this.obtenerFechaInicioDia(fecha_peru)
           console.log(value.fecha)
           console.log(fecha_prueba)
-          if(fechas.indexOf(fecha_prueba.getTime())==-1){
-            fechas.push(fecha_prueba.getTime());
+          if(f_TweetsDepresivos.indexOf(fecha_prueba.getTime())==-1){
+            f_TweetsDepresivos.push(fecha_prueba.getTime());
             valores.push(value.estado);
           }
           else{
-            var index=fechas.indexOf(fecha_prueba.getTime());
+            var index=f_TweetsDepresivos.indexOf(fecha_prueba.getTime());
             valores[index]=valores[index]+value.estado;
           }
         }
-        for (var value of fechas) {
-          var index=fechas.indexOf(value);
-          this.graficoDatos.push([fechas[index],valores[index]]);
+        for (var value of f_TweetsDepresivos) {
+          var index=f_TweetsDepresivos.indexOf(value);
+          this.graficoDatos.push([f_TweetsDepresivos[index],valores[index]]);
         }
         if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
           this.mostrarPieChart1=true;
