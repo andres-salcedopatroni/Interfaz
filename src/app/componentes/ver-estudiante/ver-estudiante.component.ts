@@ -25,7 +25,6 @@ export class VerEstudianteComponent implements OnInit {
   usuario:any;
   mensajes:any;
   fechas:any=[];
-  graficoDatos:any=[];
   mostrarPieChart1:boolean=false;
   mostrarPieChart2:boolean=false;
   mostrar:boolean=false;
@@ -57,6 +56,7 @@ export class VerEstudianteComponent implements OnInit {
         mes_anterior=this.obtenerFechaInicioDia(mes_anterior)
         this.estudiante=data.estudiante;
         this.mensajes=data.tweets;
+        var graficoDatos:any=[];
         //Clasificando mensajes
         for (var value of this.mensajes) {
           var fecha_peru = new Date(value.fecha)
@@ -130,11 +130,11 @@ export class VerEstudianteComponent implements OnInit {
         }
         for (var value of f_TweetsDepresivos) {
           var index=f_TweetsDepresivos.indexOf(value);
-          this.graficoDatos.push([f_TweetsDepresivos[index],v__TweetsDepresivos[index]]);
+          graficoDatos.push([f_TweetsDepresivos[index],v__TweetsDepresivos[index]]);
         }
         if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
           this.mostrarPieChart1=true;
-          this.dibujarScatterChart(t_TweetsDepresivos,t_TweetsNoDepresivos,this.graficoDatos,'grafica_3','Prueba')
+          this.dibujarScatterChart(t_TweetsDepresivos,t_TweetsNoDepresivos,graficoDatos,'grafica_3','Prueba')
           this.dibujarPieChart(t_TweetsDepresivos,t_TweetsNoDepresivos,'grafica','Total');
         }
         if(t_TweetsDepresivosMensual+t_TweetsNoDepresivosMensual>0){
