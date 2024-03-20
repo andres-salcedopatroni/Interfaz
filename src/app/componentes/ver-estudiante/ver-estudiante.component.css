@@ -9,15 +9,16 @@
 .datos {
     display: flex;
     flex-wrap: wrap;
+    flex-grow: 1;
     flex-shrink:0;
     height: 40%;
-    width: 100%;
+    width: 50%;
 }
 
 .dato {
     display: flex;
     flex-grow: 1;
-    width: 30%;
+    width: 50%;
 }
 
 .nombre {
@@ -42,6 +43,7 @@
     flex-grow: 1;
     flex-shrink:0;
     height: 60%;
+    width: 50%;
     background-color:red;
 }
 
@@ -58,6 +60,18 @@
     display: none !important;
 }
 
+.scatterGrafica {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink:0;
+    height: 60%;
+    width: 100%;
+    background-color: aqua;
+}
+
+#grafica_3{
+    width: 100%;
+}
 .grafica {
     display: flex;
     flex-shrink:0;
@@ -119,7 +133,6 @@ th {
     display: flex;
     flex-grow:1;
     flex-shrink:0;
-    height: 100%;
-    width: 100%;
+    width: 50%;
 }
 

@@ -28,6 +28,7 @@ export class VerEstudianteComponent implements OnInit {
   mostrarPieChart1:boolean=false;
   mostrarPieChart2:boolean=false;
   mostrar:boolean=false;
+  t_Mensajes:any;
   
 
   constructor(private router:Router, private servicioUsuario: UsersService, private route: ActivatedRoute) { 
@@ -38,54 +39,32 @@ export class VerEstudianteComponent implements OnInit {
         this.mostrar=true;
         //Pie Chart
         var t_TweetsDepresivos=0;
-        var t_TweetsDepresivosMensual=0;
         var t_TweetsNoDepresivos=0;
-        var t_TweetsNoDepresivosMensual=0; 
         //Scatter Chart
         var f_TweetsDepresivos:any=[];
         var v__TweetsDepresivos:any=[];
-        var f_TweetsDepresivosMensual:any=[];
-        var v__TweetsDepresivosMensual:any=[];
         var f_TweetsNoDepresivos:any=[];
         var v__TweetsNoDepresivos:any=[];
-        var f_TweetsNoDepresivosMensual:any=[];
-        var v__TweetsNoDepresivosMensual:any=[];
         //Otros
-        var mes_anterior= new Date();
-        mes_anterior.setMonth(mes_anterior.getMonth()-1)
-        mes_anterior=this.obtenerFechaInicioDia(mes_anterior)
         this.estudiante=data.estudiante;
         this.mensajes=data.tweets;
+        this.t_Mensajes=data.tweets;
         var graficoDatosDepresivos:any=[];
         var graficoDatosNoDepresivos:any=[];
-        var graficoDatosDepresivosMensual:any=[];
-        var graficoDatosNoDepresivosMensual:any=[];
         //Clasificando mensajes
         for (var value of this.mensajes) {
           var fecha_peru = new Date(value.fecha)
           var fecha_prueba=this.obtenerFechaInicioDia(fecha_peru)
-          console.log(value.fecha)
-          console.log(fecha_prueba)
           if(f_TweetsDepresivos.indexOf(fecha_prueba.getTime())==-1 && f_TweetsNoDepresivos.indexOf(fecha_prueba.getTime())==-1){
             if(value.estado==1){
               t_TweetsDepresivos= t_TweetsDepresivos + 1;
               f_TweetsDepresivos.push(fecha_prueba.getTime());
               v__TweetsDepresivos.push(1);
-              if(mes_anterior<=fecha_peru){
-                t_TweetsDepresivosMensual=t_TweetsDepresivosMensual+1;
-                f_TweetsDepresivosMensual.push(fecha_prueba.getTime());
-                v__TweetsDepresivosMensual.push(1);
-              }
             }
             else{
               t_TweetsNoDepresivos = t_TweetsNoDepresivos + 1;
               f_TweetsNoDepresivos.push(fecha_prueba.getTime());
               v__TweetsNoDepresivos.push(1);
-              if(mes_anterior<=fecha_peru){
-                t_TweetsNoDepresivosMensual=t_TweetsNoDepresivosMensual+1;
-                f_TweetsNoDepresivosMensual.push(fecha_prueba.getTime());
-                v__TweetsNoDepresivosMensual.push(1);
-              }
             }
           }
           else{
@@ -94,19 +73,10 @@ export class VerEstudianteComponent implements OnInit {
                 t_TweetsDepresivos= t_TweetsDepresivos + 1;
                 f_TweetsDepresivos.push(fecha_prueba.getTime());
                 v__TweetsDepresivos.push(1);
-                if(mes_anterior<=fecha_peru){
-                  t_TweetsDepresivosMensual=t_TweetsDepresivosMensual+1;
-                  f_TweetsDepresivosMensual.push(fecha_prueba.getTime());
-                  v__TweetsDepresivosMensual.push(1);
-                }
               }
               else{
                 var index=f_TweetsDepresivos.indexOf(fecha_prueba.getTime());
                 v__TweetsDepresivos[index]=v__TweetsDepresivos[index]+1;
-                if(mes_anterior<=fecha_peru){
-                  index=f_TweetsDepresivosMensual.indexOf(fecha_prueba.getTime());
-                  v__TweetsDepresivosMensual[index]=v__TweetsDepresivosMensual[index]+1;
-                }
               }
             }
             else{
@@ -114,19 +84,10 @@ export class VerEstudianteComponent implements OnInit {
                 t_TweetsNoDepresivos = t_TweetsNoDepresivos + 1;
                 f_TweetsNoDepresivos.push(fecha_prueba.getTime());
                 v__TweetsNoDepresivos.push(1);
-                if(mes_anterior<=fecha_peru){
-                  t_TweetsNoDepresivosMensual=t_TweetsNoDepresivosMensual+1;
-                  f_TweetsNoDepresivosMensual.push(fecha_prueba.getTime());
-                  v__TweetsNoDepresivosMensual.push(1);
-                }
               }
               else{
                 var index=f_TweetsNoDepresivos.indexOf(fecha_prueba.getTime());
                 v__TweetsNoDepresivos[index]=v__TweetsNoDepresivos[index]+1;
-                if(mes_anterior<=fecha_peru){
-                  index=f_TweetsNoDepresivosMensual.indexOf(fecha_prueba.getTime());
-                  v__TweetsNoDepresivosMensual[index]=v__TweetsNoDepresivosMensual[index]+1;
-                }
               }
             }
           }
@@ -139,24 +100,11 @@ export class VerEstudianteComponent implements OnInit {
           var index=f_TweetsNoDepresivos.indexOf(value);
           graficoDatosNoDepresivos.push([f_TweetsNoDepresivos[index],v__TweetsNoDepresivos[index]]);
         }
-        for (var value of f_TweetsDepresivosMensual) {
-          var index=f_TweetsDepresivosMensual.indexOf(value);
-          graficoDatosDepresivosMensual.push([f_TweetsDepresivosMensual[index],v__TweetsDepresivosMensual[index]]);
-        }
-        for (var value of f_TweetsNoDepresivosMensual) {
-          var index=f_TweetsNoDepresivosMensual.indexOf(value);
-          graficoDatosNoDepresivosMensual.push([f_TweetsNoDepresivosMensual[index],v__TweetsNoDepresivosMensual[index]]);
-        }
         if(t_TweetsDepresivos+t_TweetsNoDepresivos>0){
           this.mostrarPieChart1=true;
           this.dibujarScatterChart(t_TweetsDepresivos,t_TweetsNoDepresivos,graficoDatosDepresivos,graficoDatosNoDepresivos,'grafica_3','Prueba')
           this.dibujarPieChart(t_TweetsDepresivos,t_TweetsNoDepresivos,'grafica','Total');
         }
-        if(t_TweetsDepresivosMensual+t_TweetsNoDepresivosMensual>0){
-          this.mostrarPieChart2=true;
-          this.dibujarScatterChart(t_TweetsDepresivos,t_TweetsNoDepresivos,graficoDatosDepresivosMensual,graficoDatosNoDepresivosMensual,'grafica_4','Prueba')
-          this.dibujarPieChart(t_TweetsDepresivosMensual,t_TweetsNoDepresivosMensual,'grafica_2','Mensual');
-        }        
       },
       (error)=>{}
     );
@@ -257,6 +205,8 @@ export class VerEstudianteComponent implements OnInit {
         credits: {
           enabled: false
         },
+        plotOptions: {
+        },
         xAxis: {
           type: 'datetime',
           dateTimeLabelFormats: {
@@ -293,4 +243,7 @@ export class VerEstudianteComponent implements OnInit {
    
   }
 
+  mes(): void{
+
+  }
 }
