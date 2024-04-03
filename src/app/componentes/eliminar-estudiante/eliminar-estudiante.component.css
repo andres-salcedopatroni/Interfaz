@@ -1,0 +1,103 @@
+.estudiante {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  height: 94%;
+  width: 100%;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.datos {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  height: 80%;
+  width: 100%;
+}
+
+.dato {
+  display: flex;
+  flex-grow: 1;
+  width: 50%;
+}
+
+.nombre {
+  display: flex;
+  justify-content:center;
+  align-items:center; 
+  height: 100%;
+  width: 30%;
+}
+
+.valor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-collapse: collapse;
+  word-break: break-word;
+  height: 100%;
+  width: 70%;
+}
+
+.boton{
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.boton *{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  color: black;
+  width: 30%;
+  height: 50%;
+}
+
+.boton *:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+.mensajeError {
+  display: flex;
+  flex-grow: 1;
+  height: 20%;
+  width: 100%;
+  background-color: black;
+  color: red;
+}
+
+   /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+    .card-container > *:not(.circle-link) ,
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }

@@ -1,0 +1,156 @@
+.estudiante {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    height: 94%;
+    width: 100%;
+}
+
+.datos {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    width: 50%;
+}
+
+.dato {
+    display: flex;
+    flex-grow: 1;
+    width: 50%;
+}
+
+.nombre {
+    display: flex;
+    justify-content:center;
+    align-items:center; 
+    height: 100%;
+    width: 30%;
+}
+
+.valor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-collapse: collapse;
+    word-break: break-word;
+    height: 100%;
+    width: 70%;
+}
+
+.boton {
+    display: flex;
+    justify-content: space-around;
+    flex-grow:1;
+    width: 100%;
+}
+
+.boton *{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    width:20%;
+    height:50%;
+    background-color: #ADD8E6;
+}
+
+.boton *:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.pieChartGrafica{
+    display: flex;
+    flex-grow: 1;
+    height: 60%;
+    width: 50%;
+}
+
+#grafica {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%; 
+}
+
+.scatterGrafica {
+    display: flex;
+    flex-grow: 1;
+    height: 60%;
+    width: 100%;
+}
+
+#grafica_3{
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%; 
+}
+
+.mensajes {
+    display: flex;
+    justify-content:center; 
+    flex-grow: 1;
+    height: 60%;
+    width: 100%;
+}
+
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 96%;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: grey;
+    color: white;
+}
+
+.mensaje{
+    width: 78%;
+}
+
+.fecha{
+    width: 10%;
+}
+
+.tipo_1{
+    background-color: #88DC65;
+    width: 12%;
+}
+
+.tipo_2{
+    background-color: #CC6666;
+    width: 12%;
+}
+
+@media screen and (max-width: 600px) {
+    
+    .estudiante{ height: auto;}
+    .datos {        
+        width: 100%;
+        height: auto;
+    }
+
+    .dato {
+        width: 100%;
+    }
+    
+
+    #pieChart {
+        height: 100%;
+        width: 200%;
+    }
+}

@@ -1,0 +1,121 @@
+.formulario {
+    display: flex;
+    align-items:center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    height: 94%;
+    width: 100%;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.contenidoFormulario {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    box-sizing: border-box;
+    height: 80%;
+    width: 100%; 
+}
+
+.ingreso {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.campo {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%; 
+}
+
+.casilla {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    height: 50%;
+    width: 100%;
+}
+
+.casilla *{
+    height: 90%;
+    width: 80%;
+    border: inset;
+    background-color: rgb(250, 246, 246);
+    box-sizing:border-box;
+}
+
+.boton {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+
+}
+
+.boton *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    color: black;
+    width: 30%;
+    height: 50%;
+}
+
+.boton *:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+.mensajeError {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    background-color: black;
+    color: red;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) {
+
+    .titulo {
+        height: 100px;
+    }
+
+    .contenidoFormulario {
+        height: auto;
+    }
+
+    .ingreso {
+        height: 500px;
+    }
+
+    .campo {
+        width: 100%; 
+    }
+
+    .casilla {
+        justify-content: space-around;
+        width: auto;
+    }
+    
+}
+
+
+
+
+
+
+

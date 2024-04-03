@@ -1,0 +1,66 @@
+<div class="estudiante">
+    <div *ngIf="mostrar" class="datos">
+        <div class="dato">
+            <div class="nombre">Nombre:</div>
+            <div class="valor">{{estudiante.nombre}}</div>
+        </div>
+        <div class="dato">
+            <div class="nombre">Usuario:</div>
+            <div class="valor">{{estudiante.usuario}}</div>
+        </div>
+        <div class="dato">
+            <div class="nombre">Escuela:</div>
+            <div class="valor">{{estudiante.escuela}}</div>
+        </div>
+        <div class="dato">
+            <div class="nombre">Codigo:</div>
+            <div class="valor">{{estudiante.codigo}}</div>
+        </div>
+        <div class="dato">
+            <div class="nombre">Correo:</div>
+            <div class="valor">{{estudiante.correo}}</div>
+        </div>
+        <div class="dato">
+            <div class="nombre">Celular:</div>
+            <div class="valor">{{estudiante.celular}}</div>
+        </div>  
+        <div class="boton">
+            <button (click)="defecto()">
+                Vista por defecto
+            </button>
+            <button (click)="mes()">
+                Vista del ultimo Mes
+            </button>
+            <button (click)="actualizar()">
+                Actualizar datos
+            </button>
+            <button (click)="eliminar()">
+                Eliminar estudiante
+            </button>
+        </div> 
+    </div>
+    <div class="pieChartGrafica" [hidden]="!mostrarTweets">
+        <div id="grafica">     
+        </div>
+    </div>
+    <div class="scatterGrafica" [hidden]="!mostrarTweets">
+        <div id="grafica_3">     
+        </div>
+    </div>
+    <div class="mensajes" *ngIf="mostrarTweets">
+        <table>
+            <tr>
+              <th>Tweet</th>
+              <th>Fecha</th>
+              <th>Tipo</th>
+            </tr>
+            <tr *ngFor="let m of mensajes">
+              <td class="mensaje">{{m.mensaje}}</td>
+              <td class="fecha">{{m.fecha | date:'dd-MM-yyyy'}}</td>
+              <td class="tipo_1" *ngIf="m.estado==0">No depresivo</td>
+              <td class="tipo_2" *ngIf="m.estado==1">Depresivo</td>
+            </tr>
+          </table>
+    </div>
+</div>
+

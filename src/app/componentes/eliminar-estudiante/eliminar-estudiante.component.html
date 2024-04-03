@@ -1,0 +1,36 @@
+<div *ngIf="mostrar" class="estudiante">
+  <h1 class="titulo">Eliminar Estudiante</h1>
+  <div class="datos">
+      <div class="dato">
+          <div class="nombre">Nombre:</div>
+          <div class="valor">{{estudiante.nombre}}</div>
+      </div>
+      <div class="dato">
+          <div class="nombre">Usuario:</div>
+          <div class="valor">{{estudiante.usuario}}</div>
+      </div>
+      <div class="dato">
+          <div class="nombre">Escuela:</div>
+          <div class="valor">{{estudiante.escuela}}</div>
+      </div>
+      <div class="dato">
+          <div class="nombre">Codigo:</div>
+          <div class="valor">{{estudiante.codigo}}</div>
+      </div>
+      <div class="dato">
+          <div class="nombre">Correo:</div>
+          <div class="valor">{{estudiante.correo}}</div>
+      </div>
+      <div class="dato">
+          <div class="nombre">Celular:</div>
+          <div class="valor">{{estudiante.celular}}</div>
+      </div>  
+      <div class="boton">
+        <button (click)="eliminarEstudiante()" style="background-color:#88DC65;">Confirmar</button>
+        <button (click)="cancelar()" style="background-color:#CC6666;">Cancelar</button>
+      </div>
+  </div>
+  <div *ngIf="mensajeErrorVisible" class="mensajeError">
+    Mensaje de error: {{mensajeError|json}}
+  </div>
+</div>

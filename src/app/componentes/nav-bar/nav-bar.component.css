@@ -1,0 +1,13 @@
+.barra{ 
+    display: flex;
+    height: 6%;
+    width: 100%;
+    background-color: grey;
+}
+
+.titulo {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+}
