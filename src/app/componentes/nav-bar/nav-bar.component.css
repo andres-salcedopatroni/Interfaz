@@ -11,3 +11,11 @@
     width: 70%;
     height: 100%;
 }
+
+@media screen and (max-width: 767px) {
+
+    .barra{ 
+        height: 50px;
+    }
+  
+  }

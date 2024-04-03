@@ -3,19 +3,19 @@
   <div class="contenidoFormulario">
     <div class="ingreso">
       <div class="campo">
-        <div class="casilla">Nombre</div>
+        <div class="nombre">Nombre</div>
         <div class="casilla"><input type="text" [(ngModel)]="nombre"></div>
       </div>
       <div class="campo">
-        <div class="casilla">Usuario</div>
+        <div class="nombre">Usuario</div>
         <div class="casilla"><input type="text" [(ngModel)]="usuario"></div>
       </div>
       <div class="campo">
-        <div class="casilla">Codigo</div>
+        <div class="nombre">Codigo</div>
         <div class="casilla"><input type="text" [(ngModel)]="codigo"></div>
       </div>
       <div class="campo">
-        <div class="casilla">Escuela</div>
+        <div class="nombre">Escuela</div>
         <div class="casilla">
           <select [(ngModel)]="escuela">
             <option *ngFor="let e of escuelas" [value]="e">
@@ -25,11 +25,11 @@
         </div>
       </div>
       <div class="campo">
-        <div class="casilla">Correo</div>
+        <div class="nombre">Correo</div>
         <div class="casilla"><input type="email" [(ngModel)]="correo"></div>
       </div>
       <div class="campo">
-        <div class="casilla">Celular</div>
+        <div class="nombre">Celular</div>
         <div class="casilla"><input type="tel" [(ngModel)]="celular"></div>
       </div>
       <div class="boton">

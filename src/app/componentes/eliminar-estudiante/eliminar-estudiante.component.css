@@ -80,24 +80,29 @@
   color: red;
 }
 
-   /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-    .card-container > *:not(.circle-link) ,
-    .terminal {
-      width: 100%;
-    }
+@media screen and (max-width: 767px) {
 
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
-
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
-
-    svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
-    }
+  .titulo {
+    height: 100px;
   }
+
+  .dato {
+    width: 100%; 
+    height: 100px;
+  }
+
+  .nombre {
+    justify-content: center;
+    width: 50%;
+  }
+
+  .valor {
+    justify-content: center;
+    width: 50%;
+  }
+
+  .boton {
+    height: 100px;
+  }
+
+}

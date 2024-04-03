@@ -37,6 +37,14 @@
   width: 40%; 
 }
 
+.nombre {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  height: 50%;
+  width: 100%;
+}
+
 .casilla {
   display: flex;
   align-items: center;
@@ -85,4 +93,31 @@
   width: 100%;
   background-color: black;
   color: red;
+}
+
+@media screen and (max-width: 767px) {
+
+  .titulo {
+    height: 100px;
+  }
+
+  .campo {
+    width: 100%; 
+    height: 100px;
+  }
+
+  .nombre {
+    justify-content: center;
+    width: 20%;
+  }
+
+  .casilla {
+    justify-content: center;
+    width: 80%;
+  }
+
+  .boton {
+    height: 100px;
+  }
+
 }

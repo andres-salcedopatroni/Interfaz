@@ -39,6 +39,14 @@
     width: 40%; 
 }
 
+.nombre {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    height: 50%;
+    width: 100%;
+}
+
 .casilla {
     display: flex;
     align-items: center;
@@ -91,28 +99,29 @@
 @media screen and (max-width: 767px) {
 
     .titulo {
-        height: 100px;
+      height: 100px;
     }
-
-    .contenidoFormulario {
-        height: auto;
-    }
-
-    .ingreso {
-        height: 500px;
-    }
-
+  
     .campo {
-        width: 100%; 
+      width: 100%; 
+      height: 100px;
     }
-
+  
+    .nombre {
+      justify-content: center;
+      width: 20%;
+    }
+  
     .casilla {
-        justify-content: space-around;
-        width: auto;
+      justify-content: center;
+      width: 80%;
     }
-    
+  
+    .boton {
+      height: 100px;
+    }
+  
 }
-
 
 
 
