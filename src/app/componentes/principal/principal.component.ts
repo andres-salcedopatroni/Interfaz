@@ -10,13 +10,16 @@ import { UsersService } from 'src/app/services/users.service';
 export class PrincipalComponent implements OnInit {
 
   estudiantes:any;
+  todos_estudiantes:any;
   mensajeErrorVisible:boolean=false;
   mensajeError:string='';
+  tipoUsuario:any='Todos'
   
   constructor(private servicioUsuario: UsersService,private router:Router) { 
     this.servicioUsuario.obtenerEstudiantes().subscribe(
       (data)=> {
-        this.estudiantes=data
+        this.estudiantes=data;
+        this.todos_estudiantes=data;
       },(err)=> {
         this.mensajeErrorVisible=true;
         this.mensajeError=err.error.mensaje;
@@ -25,6 +28,18 @@ export class PrincipalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  
+  filtrarUsuarios(): void {
+    if(this.tipoUsuario=='Todos')
+      this.estudiantes=this.todos_estudiantes;
+    else{
+      this.estudiantes=[];
+      for(let e of this.todos_estudiantes){
+        if(e.estado==this.tipoUsuario)
+          this.estudiantes.push(e)
+      }
+    }
   }
   
   verEstudiante(usuario:any): void {
