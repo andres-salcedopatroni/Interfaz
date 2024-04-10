@@ -10,6 +10,7 @@ import { UsersService } from 'src/app/services/users.service';
 export class PrincipalComponent implements OnInit {
 
   estudiantes:any;
+  nombreUsuario:any='';
   todos_estudiantes:any;
   mensajeErrorVisible:boolean=false;
   mensajeError:string='';
@@ -31,14 +32,22 @@ export class PrincipalComponent implements OnInit {
   }
   
   filtrarUsuarios(): void {
-    if(this.tipoUsuario=='Todos')
-      this.estudiantes=this.todos_estudiantes;
-    else{
-      this.estudiantes=[];
-      for(let e of this.todos_estudiantes){
-        if(e.estado==this.tipoUsuario)
-          this.estudiantes.push(e)
+    this.estudiantes=this.todos_estudiantes;
+    var filtro_estudiantes=[];
+    if(this.nombreUsuario!=''){      
+      for(let e of this.estudiantes){
+        if(e.nombre?.indexOf(this.nombreUsuario)>=0)
+          filtro_estudiantes.push(e)
       }
+      this.estudiantes=filtro_estudiantes;
+    }
+    filtro_estudiantes=[];
+    if(this.tipoUsuario!='Todos'){
+      for(let e of this.estudiantes){
+        if(e.estado==this.tipoUsuario)
+          filtro_estudiantes.push(e)
+      }
+      this.estudiantes=filtro_estudiantes;
     }
   }
   

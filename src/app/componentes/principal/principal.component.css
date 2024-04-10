@@ -56,7 +56,8 @@ svg.material-icons:not(:last-child) {
 
 .opcion {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
 }
@@ -65,12 +66,13 @@ svg.material-icons:not(:last-child) {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   height: 60px;
-  width: 200px;
+  width: 35%;
   transition: all 0.2s ease-in-out;
 }
 
-.opcion *:hover {
+.opcion button:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
 }
@@ -88,6 +90,11 @@ svg.material-icons:not(:last-child) {
 
     .card-container {
       width: 90%;
+    }
+
+    .opcion *{
+      width:80%;
+      height: 150px;
     }
     
   }
