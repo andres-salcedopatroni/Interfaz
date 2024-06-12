@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "./dist/interfaz",
+    "public": "dist/interfaz",
     "ignore": [
       "firebase.json",
       "**/.*",
