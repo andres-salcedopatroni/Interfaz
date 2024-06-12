@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class UsersService {
 
-  private direccion="https://zany-pink-nightingale-tie.cyclic.app/estudiantes"
+  private direccion="https://backatlas-production.up.railway.app/estudiantes"
   //private direccion="http://localhost:3000/estudiantes"
 
   constructor(private http: HttpClient) { }
